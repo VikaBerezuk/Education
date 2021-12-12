@@ -1,0 +1,8 @@
+.idea
+.gitignore
+/node_modules
+/01_HW1/node_modules
+/01_HW1/coverage
+/01_HW1/.nyc_output
+package.json
+package-lock.json
