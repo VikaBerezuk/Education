@@ -1,5 +1,3 @@
-document.body.style.background = 'green';
-document.body.style.color = 'white';
 const lastResult = document.querySelector('.lastResult');
 const guessErrorResult = document.querySelector('.guessErrorResult');
 const guessSubmit = document.querySelector('.guessSubmit');
@@ -30,6 +28,7 @@ function checkRangeNumber() {
         guessMinNumber.value = 1;
         guessMaxNumber.value = 200;
         guessMaxCount.value = 15;
+        lastResult.style.color = 'red';
         lastResult.textContent ='Введите числа в диапазоне от 1 до 200 и количество попыток от 1 до  15';
     }
     console.log(guessMaxNumber.value, guessMinNumber.value, guessMaxCount.value, minNumber);
@@ -41,30 +40,35 @@ function checkGuess() {
     const userGuess = Number(guessField.value);
     //guesses.textContent += userGuess + ' ';
     if(isNaN(userGuess)) {
+        lastResult.style.color = 'red';
         lastResult.textContent = `Вы указали букву, укажите число в диапазоне ${minNumber} до ${maxNumber}`;
         return userGuess;
     }
     if( userGuess < +minNumber ||  userGuess > +maxNumber) {
+        lastResult.style.color = 'red';
         lastResult.textContent = `Вы не верно указали число, укажите число в диапазоне ${minNumber} до ${maxNumber}`;
         console.log(userGuess, +minNumber);
         return userGuess;
     }
     if (userGuess === randomNumber) {
-            lastResult.textContent = `Поздравляю! Вы угадали! За ${guessCount} попыток`;
-            lastResult.style.fontWeight = '900';
-            guessErrorResult.textContent = '';
-            setGameOver();
+        lastResult.style.color = 'green';
+        lastResult.textContent = `Поздравляю! Вы угадали! За ${guessCount} попыток`;
+        lastResult.style.fontWeight = '900';
+        guessErrorResult.textContent = '';
+        setGameOver();
     } else if (guessCount === guessMaxCount) {
-            lastResult.textContent = `!!!К сожалению, Вы не угадали. Игра завершина за ${guessCount} попыток!!!`;
-            guessErrorResult.textContent = '';
-            setGameOver();
+        lastResult.style.color = 'red';
+        lastResult.textContent = `!!!К сожалению, Вы не угадали. Игра завершина за ${guessCount} попыток!!!`;
+        guessErrorResult.textContent = '';
+        setGameOver();
     } else {
-            lastResult.textContent = 'Вы Не угадали!';
-            if(userGuess < randomNumber) {
-                guessErrorResult.textContent = `Предыдущее число было больше! Попытка ${guessCount}` ;
-            } else if(userGuess > randomNumber) {
-                guessErrorResult.textContent = `Предыдущее число было меньше! Попытка ${guessCount}`;
-            }
+        lastResult.textContent = 'Вы Не угадали!';
+        lastResult.style.color = 'blue';
+        if(userGuess < randomNumber) {
+            guessErrorResult.textContent = `Предыдущее число было больше! Попытка ${guessCount}` ;
+        } else if(userGuess > randomNumber) {
+            guessErrorResult.textContent = `Предыдущее число было меньше! Попытка ${guessCount}`;
+        }
     }
     guessCount++;
     guessField.value = '';
@@ -77,21 +81,22 @@ function setGameOver() {
     guessSubmit.disabled = true;
     guessSubmitExit.disabled = true;
     resetButton = document.createElement('button');
-    resetButton.style.position = 'relative';
-    resetButton.style.left = '45%';
+    resetButton.className += 'guess-number__button'
     resetButton.textContent = 'Начать новую игру';
-    document.body.appendChild(resetButton);
+    document.querySelector('.resetGame').appendChild(resetButton);
     resetButton.addEventListener('click', resetGame);
 }
 
 function resetGame() {
     guessCount = 1;
-    const result = document.querySelectorAll('.result p');
-    for (const resetPara of result) {
-        resetPara.textContent = '';
-    }
+    // const result = document.querySelectorAll('.result p');
+    // for (const resetPara of result) {
+    //     resetPara.textContent = '';
+    // }
 
-    resetButton.parentNode.removeChild(resetButton);
+    lastResult.textContent = '';
+    document.querySelector('.resetGame').textContent = '';
+    //resetButton.parentNode.removeChild(resetButton);
     guessField.disabled = false;
     guessSubmit.disabled = false;
     guessSubmitExit.disabled = false;

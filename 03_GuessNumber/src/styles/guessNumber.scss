@@ -1,0 +1,60 @@
+$main-color: #000088;
+
+.guess-number {
+  width: 375px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  padding: 10px;
+  border: thick double $main-color;
+  border-radius: 10px;
+  color: $main-color;
+
+  &__title,
+  &__label {
+    font-size: 20px;
+    padding: 10px;
+    color: $main-color;
+    text-shadow: 1px -1px 2px blue;
+  }
+  &__input,
+  &__button {
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin: 5px 3px;
+  }
+
+  &__button {
+    background: blue;
+    color: white;
+    text-transform: uppercase;
+
+    &:hover {
+      box-shadow: 0 1px 4px 3px $main-color;
+      cursor: pointer;
+    }
+
+    &.disabled {
+      background: grey;
+      color: white;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &__input {
+    &:focus {
+      outline: thick double $main-color;
+    }
+
+    &:nth-child(4) {
+      border: 1px $main-color dashed;
+    }
+  }
+}
