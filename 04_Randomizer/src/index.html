@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="index.css" rel="stylesheet"/>
+    <title>Randomizer</title>
+</head>
+<body>
+<section class="randomizer">
+    <h1 class="randomizer__header">Randomizer</h1>
+    <form class="randomizer-form">
+        <label for="min" class="randomizer-form__label">Min</label>
+        <input class="randomizer-form__input" id="min" type="number" value="1" min="1"/>
+        <label for="max" class="randomizer-form__label">Max</label>
+        <input class="randomizer-form__input" id="max" type="number" value="5" min="5"/>
+        <br />
+        <button class="randomizer-form__button" id="randomizer-form__button" type="button" onclick="generated()">Generate</button>
+    </form>
+    <div id="randomizer-generate" class="randomizer__generate"></div>
+    <button class="randomizer__button-reset" id="randomizer__button-reset" type="button" onclick="resetGame()">Reset</button>
+</section>
+
+<script src="index.js"/>
+</body>
+</html>
