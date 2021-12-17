@@ -28,7 +28,7 @@ gulpfile.task('copy:js', function (cb) {
 })
 
 gulpfile.task('watch', function () {
-    gulpfile.watch('./src/**/*.scss', gulpfile.series(['clean', 'sass', 'copy:html', 'copy:js']));
+    gulpfile.watch(['./src/styles/**/*.scss', './src/index.html'], gulpfile.series(['clean', 'sass', 'copy:html', 'copy:js']));
 })
 
 gulpfile.task('default', gulpfile.series(['clean', 'sass', 'copy:html', 'copy:js']))
