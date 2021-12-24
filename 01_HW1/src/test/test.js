@@ -1,9 +1,9 @@
 const assert = require('assert');
 const path = require('path');
-const operations = require(path.join(__dirname, './operator.js'));
-const loop = require(path.join(__dirname, './loop.js'));
-const array = require(path.join(__dirname, './array.js'));
-const func = require(path.join(__dirname, './function.js'));
+const operations = require(path.join(__dirname, './../operator.js'));
+const loop = require(path.join(__dirname, './../loop.js'));
+const array = require(path.join(__dirname, './../array.js'));
+const func = require(path.join(__dirname, './../function.js'));
 
 describe('test operator.js', function () {
     describe('oddOrEven', function () {

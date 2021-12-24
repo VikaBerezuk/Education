@@ -1,9 +1,9 @@
 {
   "name": "01_hw1",
   "version": "1.0.0",
-  "main": "test.js",
+  "main": "src/test/test.js",
   "scripts": {
-    "test": "mocha",
+    "test": "mocha src/test",
     "coverage": "nyc --reporter=html npm run test"
   },
   "author": "Viktoriia",
