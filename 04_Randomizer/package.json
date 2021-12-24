@@ -1,0 +1,17 @@
+{
+  "name": "04_Randomizer",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "scripts": {
+    "cmd": "gulp",
+    "build": "yarn cmd",
+    "watch": "yarn cmd watch"
+  },
+  "dependencies": {
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.0.0",
+    "sass": "^1.45.0"
+  }
+}
