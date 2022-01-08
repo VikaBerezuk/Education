@@ -22,13 +22,13 @@ gulpfile.task('copy:html', function (cb) {
 })
 
 gulpfile.task('copy:js', function (cb) {
-    gulp.src('./src/index.js')
+    gulp.src('./src/js/*.js')
         .pipe(gulp.dest('./dist'))
     cb()
 })
 
 gulpfile.task('watch', function () {
-    gulpfile.watch(['./src/styles/**/*.scss', './src/index.html'], gulpfile.series(['clean', 'sass', 'copy:html', 'copy:js']));
+    gulpfile.watch(['./src/styles/**/*.scss', './src/index.html', './src/index.js'], gulpfile.series(['clean', 'sass', 'copy:html', 'copy:js']));
 })
 
 gulpfile.task('default', gulpfile.series(['clean', 'sass', 'copy:html', 'copy:js']))

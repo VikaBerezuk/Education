@@ -1,15 +1,17 @@
 $base-color: blue;
 
 .randomizer {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-weight: 700;
   font-size: 20px;
-  margin: -10px auto;
+  color: blue;
+  margin: 10%;
   text-align: center;
+  background: lightblue;
+  border-radius: 20px;
 
   &__header {
     text-transform: uppercase;
@@ -35,10 +37,12 @@ $base-color: blue;
   }
   &-form__button,
   &__button-reset {
-    background: white;
-    border: 1px solid darkgray;
+    background: repeating-linear-gradient(45deg, blue, transparent 100px);
+    color: white;
+    font-weight: 700;
+    border: 3px solid;
     border-radius: 5px;
-    padding: 5px 7px;
+    padding: 5px 17px;
     margin: 5px;
 
     &:hover {
@@ -49,9 +53,11 @@ $base-color: blue;
     &.disabled {
       background: grey;
       color: white;
+      cursor: not-allowed;
 
       &:hover {
         box-shadow: none;
+        cursor: not-allowed;
       }
     }
   }
