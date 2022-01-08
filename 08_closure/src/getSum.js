@@ -15,11 +15,11 @@ function getSum(num1, num2) {
     const sumArr = num1.split('');
     const sumArr2= num2.split('');
 
-    const newArr = sumArr.map(Number);
-    const  newArr2 = sumArr2.map(Number);
+    const arr = sumArr.map(Number);
+    const  arr2 = sumArr2.map(Number);
 
-    const sum =  newArr2.map(function (num, ind) {
-        return num + newArr[ind];
+    const sum =  arr2.map(function (num, num2) {
+        return num + arr[num2];
     });
     let x = sum.join('')
     return x;
