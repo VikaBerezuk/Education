@@ -36,9 +36,9 @@ function checkRangeNumber(state) {
     state.randomNumber = Math.floor(Math.random() * (guessMaxNumber - guessMinNumber)) + Number(guessMinNumber);
 
     if (guessMinNumber >= 1 && guessMinNumber <= 200 && guessMaxNumber >= 1 && guessMaxNumber <= 200 && guessMaxCount >= 1 && guessMaxCount <= 15) {
-        state.minNumber = document.getElementById('minNumber').innerText = String(guessMinNumber);
-        state.maxNumber = document.getElementById('maxNumber').innerText = String(guessMaxNumber);
-        state.counterNumber = document.getElementById('counterNumber').innerText = String(guessMaxCount);
+        state.minNumber = getInnerHtml('minNumber', guessMinNumber);
+        state.maxNumber = getInnerHtml('maxNumber', guessMaxNumber);
+        state.counterNumber = getInnerHtml('counterNumber', guessMaxCount);
         state.guessCount = 1;
     } else {
         guessMinNumber.value = 1;
@@ -46,7 +46,7 @@ function checkRangeNumber(state) {
         guessMaxCount.value = 15;
         getStyleColor('lastResult', 'red', 'Введите числа в диапазоне от 1 до 200 и количество попыток от 1 до  15');
     }
-  //  console.log(guessMaxNumber.value, guessMinNumber.value, guessMaxCount.value, state.minNumber);
+    //  console.log(guessMaxNumber.value, guessMinNumber.value, guessMaxCount.value, state.minNumber);
 }
 
 function checkGuess(state) {
@@ -117,4 +117,4 @@ function resetGame(state) {
     state.randomNumber = Math.floor(Math.random() * 200) + 1;
 }
 
-module.exports = { checkGuess }
+module.exports = { checkGuess, resetGame, setGameOver, checkRangeNumber, init }

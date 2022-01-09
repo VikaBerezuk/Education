@@ -1,7 +1,8 @@
 function getInputId(id) {
     let node = document.getElementById(id);
     if (node){
-        return node.value;
+        node = +node.value;
+        return node;
     }
     return '';
 }
