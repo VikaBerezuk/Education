@@ -1,11 +1,3 @@
-function getValueId(id) {
-    const value = document.getElementById(id);
-    if (value){
-        return true;
-    }
-    return '';
-}
-
 function getInputId(id) {
     let node = document.getElementById(id);
     if (node){
@@ -70,4 +62,4 @@ function addListener (id, eventType, callback){
     }
 }
 
-module.exports = { getValueId, addListener, getInputId, getStyleColor, getAddClass, resetButton, deleteClass, getInnerHtml }
+module.exports = { addListener, getInputId, getStyleColor, getAddClass, resetButton, deleteClass, getInnerHtml }
