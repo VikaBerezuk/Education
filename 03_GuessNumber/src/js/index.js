@@ -15,6 +15,7 @@ function init() {
         counterNumber: 15,
         guessCount: 1,
         randomNumber: 56,
+        guessMaxCount: getInputId('guessMaxCount')
     };
 
     addListener('checkRangeNumber', 'click', checkRangeNumber.bind(null, state));
@@ -50,16 +51,13 @@ function checkRangeNumber(state) {
 
 function checkGuess(state) {
     state.userGuess = getInputId('guessField');
-    state.guessMaxCount = getInputId('guessMaxCount');
 
-    if (isNaN(state.userGuess)) {
+    if (typeof state.userGuess !== 'number' || isNaN(state.userGuess)) {
         getStyleColor('lastResult', 'red', `Вы указали букву, укажите число в диапазоне ${state.minNumber} до ${state.maxNumber}`);
-        console.log(state)
-        return false;
+        return 'NaN';
     }
     if (state.userGuess < state.minNumber || state.userGuess > state.maxNumber) {
         getStyleColor('lastResult', 'red', `Вы не верно указали число, укажите число в диапазоне ${state.minNumber} до ${state.maxNumber}`)
-        console.log(state)
         return false;
     }
     if (state.userGuess === state.randomNumber) {
@@ -69,7 +67,6 @@ function checkGuess(state) {
         return true;
     }
     if (state.guessCount === state.guessMaxCount) {
-        console.log(state)
         getStyleColor('lastResult', 'red', `!!!К сожалению, Вы не угадали. Игра завершина за ${state.guessCount} попыток!!!`);
         getStyleColor('guessErrorResult', '', '');
         setGameOver();
