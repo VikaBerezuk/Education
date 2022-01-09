@@ -15,36 +15,41 @@ $main-color: #000088;
 
   &__title,
   &__label {
+    font-weight: 600;
     font-size: 20px;
     padding: 10px;
-    color: $main-color;
-    text-shadow: 1px -1px 2px blue;
+    color: blue;
   }
-  &__input,
-  &__button {
+  &__input {
     border: none;
     border-radius: 10px;
     padding: 5px 10px;
     margin: 5px 3px;
-  }
-
-  &__button {
-    background: blue;
-    color: white;
-    text-transform: uppercase;
 
     &:hover {
       box-shadow: 0 1px 4px 3px $main-color;
-      cursor: pointer;
     }
 
     &.disabled {
-      background: grey;
-      color: white;
+      background-color: rgba(239, 239, 239, 0.3);
+      opacity: 0.3;
 
       &:hover {
         box-shadow: none;
       }
+    }
+  }
+
+  #resetGameButton {
+    background: blue;
+    color: white;
+    border-radius: 10px;
+    text-transform: uppercase;
+    padding: 7px;
+
+    &:hover {
+      box-shadow: 0 1px 4px 3px $main-color;
+      cursor: pointer;
     }
   }
 

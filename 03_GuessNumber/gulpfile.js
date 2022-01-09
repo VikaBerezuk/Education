@@ -22,7 +22,7 @@ gulpfile.task('copy:html', function (cb) {
 })
 
 gulpfile.task('copy:js', function (cb) {
-    gulp.src('./src/index.js')
+    gulp.src('./src/js/*.js')
         .pipe(gulp.dest('./dist'))
     cb()
 })

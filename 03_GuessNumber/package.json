@@ -1,7 +1,7 @@
 {
-  "name": "03_GuessNumber",
+  "name": "guessNumber",
   "version": "1.0.0",
-  "main": "src/index.js",
+  "main": "src/js/index.js",
   "license": "MIT",
   "scripts": {
     "cmd": "gulp",
