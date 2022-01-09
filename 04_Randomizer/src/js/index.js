@@ -56,4 +56,4 @@ function resetGame(state) {
     return true;
 }
 
-module.exports = { generated , resetGame, getRandomNumber };
+module.exports = { generated , resetGame, getRandomNumber, init };
