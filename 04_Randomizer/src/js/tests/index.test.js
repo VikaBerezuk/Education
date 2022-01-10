@@ -4,7 +4,6 @@ jest.mock('../utils', () => {
         __esModule: true,
          alertCall: jest.fn(),
         reStartGame: jest.fn(),
-        getValue: jest.fn(),
         getValue: jest.fn(() => true),
         addListener: jest.fn(() => true),
     };
@@ -47,15 +46,27 @@ describe('tests for reset game function', () => {
 })
 
 describe('tests for random number function', () => {
-    test('test', () => {
-        expect(true).toBe(true);
+    test('test for random number', () => {
+        expect(getRandomNumber({
+            minNumber: 1,
+            maxNumber: 5,
+            arr: []})).toBeUndefined();
     })
 
     test('test for random number', () => {
         expect(getRandomNumber({
             minNumber: 1,
             maxNumber: 5,
-            arr: []})).toBe(true);
+            randomNumber: 4,
+            valueGenerate: 'Generated number: 4',
+            arr: [1, 2, 3, 4, 5]})).toBeUndefined();
+    })
+
+    test('test for random number, max < min', () => {
+        expect(getRandomNumber({
+            minNumber: 5,
+            maxNumber: 1,
+            arr: []})).toBeUndefined();
     })
 })
 
