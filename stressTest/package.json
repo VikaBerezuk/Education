@@ -1,0 +1,17 @@
+{
+  "name": "stressTest",
+  "version": "1.0.0",
+  "main": "src/js/index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "del": "^6.0.0",
+    "jsdom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.0",
+    "jest": "^27.4.7"
+  }
+}
