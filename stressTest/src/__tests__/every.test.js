@@ -8,6 +8,8 @@ describe('every', () => {
     test.each([
         [[8, 2, 4], num, true],
         [[1, 5, 7], num, false],
+        ['5', num, false],
+        [[1, 5, 7], 'num', false],
     ])('every', function (arr, func, result) {
         expect(every(arr, func)).toBe(result);
     });

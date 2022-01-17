@@ -18,6 +18,10 @@ function num(array) {
 }
 
 function every(array, func) {
+    if (!Array.isArray(array) || typeof func !== 'function' || array.length < 1){
+        return false;
+    }
+
     return func(array);
 }
 
