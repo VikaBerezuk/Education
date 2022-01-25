@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to top left, red, black);
+  color: white;
+  font-size: 20px;
+
+  @media(min-width: 768px) {
+    height: 100vh;
+  }
+}
