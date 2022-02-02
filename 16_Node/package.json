@@ -1,0 +1,17 @@
+{
+  "name": "16_Node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+   "scripts": {
+      "start": "cd ./packages/server && yarn start",
+      "build": "yarn build:web && yarn build:server",
+      "build:web": "cd ./packages/web && yarn start",
+      "build:server": "cd ./packages/server && yarn build"
+    },
+  "workspaces": ["packages/*"],
+  "engines": {
+     "node": "16.x"
+  },
+  "private": "true"
+}
