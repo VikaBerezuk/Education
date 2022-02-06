@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.1.1/math.min.js" integrity="sha512-o7l/Uxf+iFLa5H6VpPjFdrY+bF+JtYI47FXfYJp6zlCRhs8K8sO1EVyEiS/1FeEvw1b6HeK6oXT3Plza8L/NIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="styles.css" rel="stylesheet"/>
     <title>Calculator</title>
     <script>
@@ -48,53 +49,56 @@
 <body>
 <table class="calculator">
     <tr>
-        <td colspan="5"><div class="calculator__value" id="calculatorValue">0</div></td>
+        <td colspan="8">
+            <div class="calculator__value" id="calculatorValue">0</div>
+        </td>
     </tr>
     <tr>
-        <td><button id="changeButton" type="button">2<sup>nd</sup></button></td>
-        <td><button id="pi" type="button">&pi;</button></td>
-        <td><button id="getE" type="button">e</button></td>
-        <td><button id="back" type="button">&lArr;</button></td>
+        <td class="engineering"><button id="changeButton" type="button">2<sup>nd</sup></button></td>
+        <td class="engineering"><button id="factorial" type="button">n!</button></td>
+        <td class="engineering"><button id="bracket-left" type="button">(</button></td>
+        <td class="engineering"><button id="bracket-right" type="button">)</button></td>
         <td><button id="cleaning" type="button">AC</button></td>
-    </tr>
-    <tr>
-        <td><button id="degree2" type="button">x<sup>2</sup></button></td>
-        <td><button id="degree1" type="button"><sup>1</sup>/<i>x</i></button></td>
-        <td><button id="module" type="button">|x|</button></td>
-        <td><button id="getExp" type="button">exp</button></td>
-        <td><button id="mod" type="button">mod</button></td>
-    </tr>
-    <tr>
-        <td><button id="degree3" type="button">x<sup>3</sup></button></td>
-        <td><button id="bracket-left" type="button">(</button></td>
-        <td><button id="bracket-right" type="button">)</button></td>
-        <td><button id="factorial" type="button">n!</button></td>
+        <td><button id="change" type="button"><sup>+</sup>/-</button></td>
+        <td><button id="percent" type="button">%</button></td>
         <td><button id="division" type="button" value="/">&divide;</button></td>
     </tr>
     <tr>
-        <td><button id="degree" type="button">x<sup>y</sup></button></td>
+        <td class="engineering"><button id="degree" type="button">x<sup>y</sup></button></td>
+        <td class="engineering"><button id="fractional" type="button">/</button></td>
+        <td class="engineering"><button id="degree2" type="button">x<sup>2</sup></button></td>
+        <td class="engineering"><button id="degree3" type="button">x<sup>3</sup></button></td>
         <td><button id="number7" type="button">7</button></td>
         <td><button id="number8" type="button">8</button></td>
         <td><button id="number9" type="button">9</button></td>
         <td><button  id="multiply" type="button" value="*">&times;</button></td>
     </tr>
     <tr>
-        <td><button id="degree10" type="button">10<sup>x</sup></button></td>
+        <td class="engineering"><button id="degree10" type="button">10<sup>x</sup></button></td>
+        <td class="engineering"><button id="i" type="button">i</button></td>
+        <td class="engineering"><button id="pi" type="button">&pi;</button></td>
+        <td class="engineering"><button id="getE" type="button">e</button></td>
         <td><button id="number4" type="button">4</button></td>
         <td><button id="number5" type="button">5</button></td>
         <td><button id="number6" type="button">6</button></td>
         <td><button  id="minus" type="button" value="-">&minus;</button></td>
     </tr>
     <tr>
-        <td><button id="lg" type="button">log<sup>10</sup></button></td>
+        <td class="engineering"><button id="lg" type="button">log<sup>10</sup></button></td>
+        <td class="engineering"><button id="sqrt-" type="button">&#8730;-</button></td>
+        <td class="engineering"><button id="degree1" type="button"><sup>1</sup>/<i>x</i></button></td>
+        <td class="engineering"><button id="module" type="button">|x|</button></td>
         <td><button id="number1" type="button">1</button></td>
         <td><button id="number2" type="button">2</button></td>
         <td><button id="number3" type="button">3</button></td>
         <td><button  id="plus" type="button" value="+">&plus;</button></td>
     </tr>
     <tr>
-        <td><button id="ln" type="button">ln</button></td>
-        <td><button id="change" type="button"><sup>+</sup>/-</button></td>
+        <td class="engineering"><button id="ln" type="button">ln</button></td>
+        <td class="engineering"><button id="sqrt" type="button">&#8730;</button></td>
+        <td class="engineering"><button id="getExp" type="button">exp</button></td>
+        <td class="engineering"><button id="mod" type="button">mod</button></td>
+        <td><button id="back" type="button">&lArr;</button></td>
         <td><button id="number0" type="button">0</button></td>
         <td><button type="button" id="point">.</button></td>
         <td><button  id="equality" type="button">=</button></td>

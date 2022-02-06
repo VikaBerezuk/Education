@@ -1,17 +1,18 @@
-const { addValueBracket, addValue, changeValue, changePositiveToNegative, equality,
-    pointValue, cleaning, back, pi, getE, getExp, mod, fact, log, degree, getModule, changeButton
+const { addValueBracket, addValue, changeValue, changePositiveToNegative, sqrt,
+    pointValue, cleaning, back, pi, getE, getExp, mod, fact, log, degree, getModule, changeButton, percent,
 } = require('../index');
 
 jest.mock('../utils', () => {
     return {
         __esModule: true,
         addListener: jest.fn(),
-        getElementId: jest.fn(() => '12'),
+        getElementId: jest.fn(() => '0'),
         addLength: jest.fn( () => '2'),
         getReplace: jest.fn(() => '2'),
         getIncludes: jest.fn(() => '.'),
         deleteLastElements: jest.fn(() => '0'),
-        factorial: jest.fn(() => '2')
+        factorial: jest.fn(() => '2'),
+        equality: jest.fn(() => '1')
     };
 });
 
@@ -26,23 +27,13 @@ describe('add value', () => {
     })
     test('should be function, with parameters === 0', () => {
         addLength
-            .mockImplementationOnce(() => '0');
+            .mockImplementationOnce(() => '3')
         expect(addValue('0', '0')).toBeUndefined();
     })
     test('should be function, with parameters === "(" and "+"' , () => {
-        addLength
-            .mockImplementationOnce(() => '(')
-            .mockImplementationOnce(() => '+');
-
-        expect(addValue('123(', '(')).toBeUndefined();
-    })
-    test('should be function, with parameters === "("', () => {
-        addLength
-            .mockImplementationOnce(() => '(');
-        expect(addValue('(', '0')).toBeUndefined();
-    })
-    test('should be function, with parameters === numbers', () => {
-        expect(addValue('2', '0')).toBeUndefined();
+        getElementId.mockImplementationOnce(() => '0')
+            .mockImplementationOnce(() => '0');
+        expect(addValue('0', '2')).toBeUndefined();
     })
 })
 
@@ -100,15 +91,6 @@ describe('change Positive To Negative', () => {
     })
 })
 
-describe('equality', () => {
-    test('should be function', () => {
-        expect(equality).toBeDefined()
-    })
-    test('should be function, equality', () => {
-        expect(equality()).toBeUndefined();
-    })
-})
-
 describe('point Value', () => {
     test('should be function ', () => {
         expect(pointValue).toBeDefined();
@@ -116,6 +98,11 @@ describe('point Value', () => {
     test('should be function,  with parameters === "12.1"', () => {
         getElementId.mockImplementationOnce(() => '12.1');
         getIncludes.mockImplementationOnce(() => true);
+        expect(pointValue()).toBeUndefined();
+    })
+    test('should be function,  with parameters === "12."', () => {
+        getElementId.mockImplementationOnce(() => '12.');
+        getIncludes.mockImplementationOnce(() => '.');
         expect(pointValue()).toBeUndefined();
     })
     test('should be function, point Value', () => {
@@ -137,8 +124,12 @@ describe('back', () => {
         expect(back).toBeDefined()
     })
     test('should be function, back', () => {
+        deleteLastElements.mockImplementationOnce(() => '1');
+        expect(back('10')).toBeUndefined();
+    })
+    test('should be function, back', () => {
         deleteLastElements.mockImplementationOnce(() => '0');
-        expect(back('1')).toBeUndefined();
+        expect(back('0')).toBeUndefined();
     })
 })
 
@@ -258,5 +249,28 @@ describe('change Button', () => {
     })
     test('change Button', () => {
         expect(changeButton('-1')).toBeUndefined();
+    })
+})
+
+//percent
+describe('percent', () => {
+    test('percent', () => {
+        expect(percent).toBeDefined()
+    })
+    test('percent', () => {
+        expect(percent()).toBeUndefined();
+    })
+})
+//sqrt
+describe('sqrt', () => {
+    test('sqrt', () => {
+        expect(sqrt).toBeDefined()
+    })
+    test('sqrt', () => {
+        expect(sqrt('i')).toBeUndefined();
+    })
+    test('sqrt', () => {
+        getElementId.mockImplementationOnce(()=>'1')
+        expect(sqrt('i')).toBeUndefined();
     })
 })

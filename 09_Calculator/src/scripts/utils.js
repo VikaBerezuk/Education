@@ -1,3 +1,5 @@
+const math = require("mathjs");
+
 function addListener(id, eventType, callback) {
     const node = document.getElementById(id);
     if (node) {
@@ -37,4 +39,10 @@ function factorial(n) {
     return (n != 1) ? n * factorial(n - 1) : 1;
 }
 
-module.exports = {addListener, getElementId, addLength, getReplace, getIncludes, deleteLastElements, factorial};
+function equality() {
+    const calculator = getElementId('calculatorValue');
+    calculator.textContent =  math.evaluate(calculator.textContent);
+}
+
+
+module.exports = {addListener, getElementId, addLength, getReplace, getIncludes, deleteLastElements, factorial, equality};

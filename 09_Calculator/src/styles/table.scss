@@ -17,6 +17,7 @@
   }
 
   &__value {
+    position: relative;
     height: 100px;
     padding: 60px 20px 0 0;
     border-radius: 0;
@@ -31,6 +32,16 @@
     &:focus-visible {
       border: none;
       border-radius: 0;
+    }
+
+    .button-engineering {
+      position: absolute;
+      width: 100px;
+      top: 0;
+      left: 0;
+      height: 25px;
+      box-shadow: 0 0 2px 1px black;
+      font-size: 16px;
     }
   }
 
@@ -55,4 +66,12 @@ button {
     box-shadow: 0 0 2px 2px black;
     font-weight: 600;
   }
+}
+
+.engineering {
+  display: none;
+
+ @media (min-width: 768px) {
+   display: table-cell;
+ }
 }
