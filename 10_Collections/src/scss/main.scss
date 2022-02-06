@@ -1,0 +1,40 @@
+@import "vars";
+@import "myriad";
+@import "components/section1";
+@import "components/section2";
+
+html {
+  box-sizing: border-box;
+  user-select: none;
+  font-family: Montserrat, 'Myriad Set Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0 auto;
+  width: 1200px;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+.text-gradient-sky {
+  background: $baseGradientVertical;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #1074E8;
+}
+
+.text-header-primary {
+  color: #3F4D65;
+}

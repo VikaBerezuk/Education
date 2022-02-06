@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2019",
+    "sourceMap": true
+  },
+  "moduleResolution": "node",
+  "noEmit": true,
+  "baseUrl": "./",
+  "include": ["./src/ts/**/*.ts"],
+  "exclude": [
+    "node_modules"
+  ],
+}
