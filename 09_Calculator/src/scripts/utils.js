@@ -41,7 +41,7 @@ function factorial(n) {
 
 function equality() {
     const calculator = getElementId('calculatorValue');
-    calculator.textContent =  math.evaluate(calculator.textContent);
+    calculator.textContent = math.evaluate(calculator.textContent); //eval
 }
 
 
