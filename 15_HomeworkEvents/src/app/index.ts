@@ -1,4 +1,4 @@
-import './index.scss';/// commit in test
+import './index.scss';
 import {addListener, api, createElement, getElementAppendChild, querySelectorAll, showDisplay, state} from "./utils";
 
 let interval:any;
