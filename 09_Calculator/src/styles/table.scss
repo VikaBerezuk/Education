@@ -61,8 +61,7 @@ button {
   box-shadow: 0 0 2px 2px white;
 
   &:hover {
-    background: linear-gradient(to top left, red, black);
-    color: white;
+    background: linear-gradient(to top left, lightblue, aliceblue);
     box-shadow: 0 0 2px 2px black;
     font-weight: 600;
   }
