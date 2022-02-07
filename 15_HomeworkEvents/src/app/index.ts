@@ -1,9 +1,9 @@
 import './index.scss';/// commit in test
 import {addListener, api, createElement, getElementAppendChild, querySelectorAll, showDisplay, state} from "./utils";
 
-let interval;
+let interval:any;
 
-export function paint(data) {
+export function paint(data:any[]):void {
     const imgMain = createElement('img', data[0].url, "photo", 'main__img', '', '');
     getElementAppendChild('gallery-main', imgMain)
 
@@ -16,7 +16,7 @@ export function paint(data) {
     });
 }
 
-export function showAllImg(data) {
+export function showAllImg(data:any[]):void {
     showDisplay('carousel', 'block');
 
     const img = createElement('img', data[0].url, 'photo', 'demonstration', '11', '')
@@ -35,7 +35,7 @@ export function showAllImg(data) {
     showDisplay('show-all', 'none');
 }
 
-export function closed() {
+export function closed():void {
     showDisplay('show-all', 'block');
     showDisplay('closed', 'none');
     showDisplay('carousel', 'none');
@@ -46,7 +46,7 @@ export function closed() {
         img.forEach(el => {
             if (el.className === 'demonstration') {
                 el.classList.remove('demonstration');
-                console.log(img)
+                console.log(img);
             }
         })
     }

@@ -1,8 +1,8 @@
 import {paint} from "./index";
 
-export let state = [];
+export let state:any[] = [];
 
-export function addListener(id, eventType, callback) {
+export function addListener(id:string, eventType:string, callback:() => any) {
     const node = document.getElementById(id);
     if (node) {
         node.addEventListener(eventType, callback);
@@ -11,7 +11,7 @@ export function addListener(id, eventType, callback) {
     return false;
 }
 
-export function api() {
+export function api():Promise<any> {
     return fetch('https://jsonplaceholder.typicode.com/photos')
         .then(response => {
             if (!response.ok) {
@@ -25,7 +25,7 @@ export function api() {
         })
 }
 
-export function getElementAppendChild(id, value) {
+export function getElementAppendChild(id:string, value:any) {
     const node = document.getElementById(id);
     if(node) {
        return  node.appendChild(value);
@@ -33,7 +33,7 @@ export function getElementAppendChild(id, value) {
     return false;
 }
 
-export function createElement(el, src, alt, className, id, title) {
+export function createElement(el:any, src:string, alt:string, className:string, id:string, title:string) {
     const node = document.createElement(el);
     if(node) {
         node.src = src;
@@ -46,7 +46,7 @@ export function createElement(el, src, alt, className, id, title) {
     return false;
 }
 
-export function showDisplay(id, display) {
+export function showDisplay(id:string, display:string) {
     const node = document.getElementById(id);
     if(node) {
         node.style.display = display;
@@ -54,7 +54,7 @@ export function showDisplay(id, display) {
     return false;
 }
 
-export function querySelectorAll(value) {
+export function querySelectorAll(value:string) {
     const node = document.querySelectorAll(value);
     if (node) {
         return node;

@@ -8,7 +8,7 @@ module.exports = {
     entry: './src/app/index.ts',
     module: {
         rules: [
-            { test: /\.(ts)$/, use: 'babel-loader' },
+            { test: /\.(ts)$/, use: 'ts-loader' },
             {test: /\.s[ac]ss$/i,
                 use: ["style-loader", "css-loader", "sass-loader"]}
         ]
