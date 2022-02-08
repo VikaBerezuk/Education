@@ -1,0 +1,122 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: aliceblue;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  margin: 10% 5% 2%;
+}
+
+.get-visa {
+  display: flex;
+  flex-direction: column;
+  margin-right: 30px;
+
+  @media(min-width: 768px) {
+    align-items: flex-end;
+    width: 500px;
+  }
+
+  button {
+    margin: 15px 0 15px 25px;
+    padding: 10px 20px;
+    border: 1px solid blue;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.5s;
+
+    @media(min-width: 768px) {
+      margin: 15px 10px 0;
+    }
+
+    &:hover {
+      box-shadow: 2px 2px 4px 5px;
+      text-transform: uppercase;
+      background-color: blueviolet;
+      color: white;
+    }
+  }
+
+  &__information {
+    font-size: 20px;
+
+    &--label {
+      color: mediumvioletred;
+      margin-left: 20px;
+
+      @media(min-width: 768px) {
+        margin-left: 0;
+      }
+    }
+
+    &--input {
+      display: block;
+      width: 80%;
+      padding: 10px 20px;
+      margin-left: 20px;
+      border: 1px solid mediumvioletred;
+      border-radius: 10px;
+      background-color: azure;
+      color: mediumvioletred;
+      cursor: pointer;
+
+      @media(min-width: 768px) {
+        display: inline-block;
+        width: 225px;
+      }
+    }
+
+    &__button,
+    .get-visa__generated--all {
+      background-color: azure;
+      color: mediumvioletred;
+    }
+  }
+
+  &__generated {
+
+    @media(min-width: 768px) {
+      text-align: center;
+    }
+
+    &--add {
+      background-color: cornflowerblue;
+      color: aliceblue;
+    }
+
+    &--init {
+      background-color: antiquewhite;
+      color: cornflowerblue;
+    }
+
+    &--race {
+      background-color: greenyellow;
+    }
+
+    &--clear {
+      background-color: red;
+      color: white;
+    }
+  }
+}
+
+.canvas {
+  border: 1px solid blue;
+}
+
+.generated-person, .error {
+  margin-left: 10%;
+  color: #c71585;
+  font-size: 18px;
+
+  div {
+    margin: 5px;
+  }
+}
