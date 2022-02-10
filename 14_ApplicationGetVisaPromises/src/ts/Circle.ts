@@ -14,7 +14,6 @@ export class Circle {
         } else {
             this.x = this.canvas.width / length + ((this.canvas.width / length) * people) - (this.canvas.width / length) / 2;
         }
-
         this.y = y * 65;
         this.value = value;
     }
@@ -22,7 +21,7 @@ export class Circle {
     draw() {
         this.ctx.beginPath();
         this.ctx.arc(this.x, this.y, 25, 0, 2 * Math.PI, false);
-        this.ctx.fillStyle = 'yellow';
+        this.ctx.fillStyle = 'white';
         this.ctx.fill();
         this.ctx.lineWidth = 1;
         this.ctx.strokeStyle = 'yellow';
@@ -38,7 +37,7 @@ export class Circle {
     request() {
         this.ctx.beginPath();
         this.ctx.arc(this.x, this.y, 25, 0, 2 * Math.PI, false);
-        this.ctx.fillStyle = 'green';
+        this.ctx.fillStyle = 'white';
         this.ctx.fill();
         this.ctx.lineWidth = 1;
         this.ctx.strokeStyle = 'green';
@@ -53,7 +52,7 @@ export class Circle {
     rejected() {
         this.ctx.beginPath();
         this.ctx.arc(this.x, this.y, 25, 0, 2 * Math.PI, false);
-        this.ctx.fillStyle = 'red';
+        this.ctx.fillStyle = 'white';
         this.ctx.fill();
         this.ctx.lineWidth = 1;
         this.ctx.strokeStyle = 'red';

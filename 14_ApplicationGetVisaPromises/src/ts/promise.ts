@@ -1,22 +1,6 @@
 import {User} from "./interface";
-import {ageCheck, balanceCheck, disabledButtonFalse, documentCheck, langCheck, randomTime} from "./index";
-import {Circle} from "./Circle";
-
-export function getPromise(people: number, arr: User[], minTime: number, maxTime: number, cb: Function, checkValue: string, textValue: string, circleCounter: number, ctx, canvas) {
-    return new Promise<void>(resolve => {
-        const circle = new Circle(people, arr.length, circleCounter, textValue, ctx, canvas);
-        circle.draw();
-
-        setTimeout(() => {
-            if (cb(checkValue)) {
-                circle.request();
-                resolve();
-            } else {
-                return circle.rejected();
-            }
-        }, randomTime(minTime, maxTime))
-    })
-}
+import {ageCheck, balanceCheck, documentCheck, langCheck} from "./index";
+import {disabledButton, getInnerText, getPromise} from "./utils";
 
 export function startRace(arrUsers: User[], ctx, canvas) {
     const promiseArr: Promise<any>[] = [];
@@ -39,11 +23,6 @@ export function startRace(arrUsers: User[], ctx, canvas) {
     return promiseRace(promiseArr, arrUsers);
 }
 
-function textValue(result: string, text: string) {
-    const a = <HTMLElement>document.getElementById(result);
-    a.innerText = text;
-}
-
 export function promiseRace(promiseArr: Promise<any>[], arr: User[]) {
     const errorPromise = new Promise((resolve) => {
         setTimeout(() => {
@@ -52,15 +31,15 @@ export function promiseRace(promiseArr: Promise<any>[], arr: User[]) {
     })
 
     Promise.race(promiseArr.concat(errorPromise)).then((value) => {
-        disabledButtonFalse('all-generated');
-        disabledButtonFalse('add-candidate');
-        disabledButtonFalse('start');
-        disabledButtonFalse('clear');
+        disabledButton('all-generated', false);
+        disabledButton('add-candidate', false);
+        disabledButton('start', false);
+        disabledButton('clear', false);
         if (value !== 400) {
-            textValue('error', `Winner ${arr[value].name}, receives VISA!`)
+            getInnerText('error', `Winner ${arr[value].name}, receives VISA!`)
             return value;
         } else {
-            textValue('error', 'The visa center is closed, no one received a visa.')
+            getInnerText('error', 'The visa center is closed, no one received a visa.')
             return false;
         }
     })

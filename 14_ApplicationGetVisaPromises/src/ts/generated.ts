@@ -1,12 +1,11 @@
 import {User} from "./interface";
 import {age, balance, documentVisa, levelEnglish, namePerson} from "./constants";
-import {canvas, getElementById, getValue} from "./utils";
+import {canvas, getElementById, getInnerText, getValue, getValueContext} from "./utils";
 
 export function generated(id:string, specifications) {
     const name = <HTMLInputElement>getElementById(id);
     const result = specifications[Math.floor(Math.random() * specifications.length)];
-    getValue(name, result);
-    clearCanvas();
+    getValueContext(name, result);
     return result;
 }
 
@@ -24,44 +23,36 @@ export function generatedAll(arrCandidate:User[]) {
             document: generated('myDocument', documentVisa),
             english: generated('levelEnglish', levelEnglish)
         });
-        const error = <HTMLElement>getElementById('error');
-        error.innerText = '';
+
+        getInnerText('error', '')
     } else {
-        const error =  <HTMLElement>getElementById('error');
-        error.innerText = 'The visa center closes in 15 minutes and can only accept 5 people, come back tomorrow!';
+        getInnerText('error', 'The visa center closes in 15 minutes and can only accept 5 people, come back tomorrow!')
     }
 }
 
-// export function getInnerText(id, text){
-//     const node = getElementById(id);
-//     node.innerText = text;
-// }
 export function addCandidate(arrCandidate:User[], idName:string, idBalance:string, idAge:string, idDocument:string, idEnglish:string) {
-    const name = <HTMLInputElement>document.getElementById(idName);
-    const getBalance = <HTMLInputElement>document.getElementById(idBalance);
-    const getAge = <HTMLInputElement>document.getElementById(idAge);
-    const getDocument = <HTMLInputElement>document.getElementById(idDocument);
-    const english = <HTMLInputElement>document.getElementById(idEnglish);
+    const name = <HTMLInputElement>getElementById(idName);
+    const getBalance = <HTMLInputElement>getElementById(idBalance);
+    const getAge = <HTMLInputElement>getElementById(idAge);
+    const getDocument = <HTMLInputElement>getElementById(idDocument);
+    const english = <HTMLInputElement>getElementById(idEnglish);
 
     if (arrCandidate.length < 5) {
-        if (name.value !== '' && getBalance.value !== '' && getAge.value !== '' && getDocument.value !== '' && english.value !== '') {
+        if (getValue(name) !== '' && getValue(getBalance) !== '' && getValue(getAge) !== '' && getValue(getDocument) !== '' && getValue(english) !== '') {
 
             arrCandidate.push({
-                name: name.value,
-                balance: getBalance.value,
-                age: getAge.value,
-                document: getDocument.value,
-                english: english.value
+                name: getValue(name),
+                balance: getValue(getBalance),
+                age: getValue(getAge),
+                document: getValue(getDocument),
+                english: getValue(english)
             });
 
-            const error =  <HTMLElement>document.getElementById('error');
-            error.innerText = ''
+            getInnerText('error', '');
         } else {
-            const error =  <HTMLElement>document.getElementById('error');
-            error.innerText = 'Fill out the candidate registration form.'
+            getInnerText('error', 'Fill out the candidate registration form.');
         }
     } else {
-        const error =  <HTMLElement>document.getElementById('error');
-        error.innerText = 'The visa center closes in 15 minutes and can only accept 5 people, come back tomorrow!';
+        getInnerText('error', 'The visa center closes in 15 minutes and can only accept 5 people, come back tomorrow!');
     }
 }

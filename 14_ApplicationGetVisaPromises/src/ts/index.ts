@@ -2,54 +2,47 @@ import '../index.scss';
 import {age, arrCandidate, balance, documentVisa, levelEnglish, namePerson} from "./constants";
 import {User} from "./interface";
 import {addCandidate, generated, generatedAll} from "./generated";
-import {addListener, canvas} from "./utils";
+import {
+    addListener,
+    canvas, disabledButton, getContextCanvas,
+    getCreateElTextAppendChild,
+    getElementById,
+    getInnerText, getNameCanvas
+} from "./utils";
 import {startRace} from "./promise";
 
-function showCandidate(arrCandidate: User[]):void {
-    const person = <HTMLElement>document.getElementById('generated-person');
-    person.innerText = '';
-
+export function showCandidate(arrCandidate: User[]):void {
+    arrCandidate.forEach((el, i) => {
+        getNameCanvas(el, i);
+    })
+    getInnerText('generated-person', '');
     if (arrCandidate.length > 0) {
         arrCandidate.forEach(el => {
-            const personList = document.createElement('div');
-            personList.innerText = `Name: ${el.name}; balance: ${el.balance}; age: ${el.age}; document: ${el.document}; level English: ${el.english}`;
-            person.appendChild(personList);
+            getCreateElTextAppendChild('generated-person', 'div', `Name: ${el.name}; balance: ${el.balance}; age: ${el.age}; document: ${el.document}; level English: ${el.english}`)
         })
     } else {
-        const error = <HTMLElement>document.getElementById('error');
-        error.innerText = 'Выведите данные для кандидата!';
+        getInnerText('error', 'Get the data for the candidate!')
     }
 }
 
-function disabledButtonTrue(id:string):boolean {
-    const node = <HTMLButtonElement>document.getElementById(id);
-    node.disabled = true;
-    return true;
-}
+export function start(arrCandidate: User[]):void {
+    const canvasId = <HTMLCanvasElement>getElementById('canvas');
+    const ctx = getContextCanvas();
 
-export function disabledButtonFalse(id:string):boolean {
-    const node = <HTMLButtonElement>document.getElementById(id);
-    node.disabled = false;
-    return true;
-}
+    disabledButton('all-generated', true);
+    disabledButton('add-candidate', true);
+    disabledButton('start', true);
+    disabledButton('clear', true);
 
-function start(arrCandidate: User[]):void {
-    const canvas = <HTMLCanvasElement>document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-    startRace(arrCandidate, ctx, canvas);
-
-    disabledButtonTrue('all-generated');
-    disabledButtonTrue('add-candidate');
-    disabledButtonTrue('start');
-    disabledButtonTrue('clear');
+    startRace(arrCandidate, ctx, canvasId);
 }
 
 export function balanceCheck(balance):boolean{
-    return balance > 2000;
+    return balance >= 2000;
 }
 
 export function ageCheck(age):boolean{
-    return age > 18 && age < 60;
+    return age >= 18 && age <= 60;
 }
 
 export function documentCheck(document) {
@@ -60,19 +53,10 @@ export function langCheck(eng):boolean {
     return eng === 'B1' || eng === 'B2' || eng === 'C1';
 }
 
-export function randomTime(min,max) {
-    return (Math.floor(Math.random()*(max-min +1))+min)*1000;
-}
-
-function innerText(id, text) {
-    const node = <HTMLElement>document.getElementById(id);
-    node.innerText = text;
-}
-
 export function clear():void {
     arrCandidate.length = 0;
-    innerText('error', 'Get the data for the candidate!');
-    innerText('generated-person', '');
+    getInnerText('error', 'Get the data for the candidate!');
+    getInnerText('generated-person', '');
     canvas(0,0);
 }
 
@@ -85,10 +69,7 @@ export function clear():void {
     addListener('all-generated', 'click', generatedAll.bind(null, arrCandidate));
     addListener('add-candidate', 'click', addCandidate.bind(null, arrCandidate, 'name', 'balance', 'age', 'myDocument', 'levelEnglish'));
     addListener('show-candidate', 'click', showCandidate.bind(null, arrCandidate));
-
-    addListener('start', 'click', () => {
-        start(arrCandidate);
-    });
+    addListener('start', 'click', start.bind(null, arrCandidate));
 })();
 
 addListener('clear', 'click', clear.bind(null));
